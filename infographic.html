@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Trends & Market Research Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- 
+        Chosen Color Palette: Energetic & Playful
+        #FF6B6B (Coral Red)
+        #FFD166 (Sunny Yellow)
+        #06D6A0 (Emerald Green)
+        #118AB2 (Cerulean Blue)
+        #073B4C (Midnight Blue/Dark Teal) - Primary Text & Dark Elements
+        Background: bg-slate-100
+        Card Background: bg-white
+    -->
+    <!--
+        Narrative Structure Plan:
+        1. Hero Section: Title, brief intro/hook.
+        2. Market Overview: Market Size (Line Chart for growth), Key Statistics (Big Numbers).
+        3. Market Segmentation & Share: Consumer Demographics (Bar Chart), Market Share (Donut Chart).
+        4. Competitive Landscape: Key Players (Styled Cards/List), SWOT Analysis (HTML/CSS Grid).
+        5. Technology & Innovation: Technology Adoption Rates (Area Chart).
+        6. Industry Value Chain: (HTML/CSS Diagram).
+        7. Future Outlook & Projections: Growth Projections (Bar Chart with forecast).
+        8. Conclusion: Key takeaways.
+    -->
+    <!--
+        Visualization Choices & Justification (Confirming NO SVG, NO MERMAID JS):
+        - Market Size & Growth: Line Chart (Chart.js Canvas) - Goal: Change. Justification: Shows trend over time. NO SVG.
+        - Key Statistics: Big Numbers (HTML/CSS) - Goal: Inform. Justification: Highlights key data points. NO SVG.
+        - Consumer Demographics: Bar Chart (Chart.js Canvas) - Goal: Compare. Justification: Compares segments. NO SVG.
+        - Market Share: Donut Chart (Chart.js Canvas) - Goal: Compare. Justification: Shows proportion of a whole. NO SVG.
+        - Key Players: Styled HTML/CSS Cards - Goal: Organize. Justification: Lists key entities. NO SVG.
+        - SWOT Analysis: Structured HTML/CSS Grid - Goal: Organize. Justification: Standard framework. NO SVG, NO MERMAID JS.
+        - Technology Adoption: Area Chart (Chart.js Canvas) - Goal: Change. Justification: Shows trend and volume. NO SVG.
+        - Value Chain: HTML/CSS Flow Diagram (Flexbox/Grid, Borders) - Goal: Organize. Justification: Shows process. NO SVG, NO MERMAID JS.
+        - Growth Projections: Bar Chart (Chart.js Canvas) - Goal: Change/Compare. Justification: Shows future values. NO SVG.
+        - NEITHER Mermaid JS NOR SVG were used anywhere in this output.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1F5F9; /* bg-slate-100 */
+            color: #073B4C; /* Midnight Blue/Dark Teal */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Example max-width, can be adjusted with Tailwind (e.g., max-w-2xl) */
+            margin-left: auto;
+            margin-right: auto;
+            /* height is controlled by Tailwind classes like h-[300px] or h-[40vh] */
+            /* max-height is controlled by Tailwind classes like max-h-[400px] */
+        }
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .swot-item {
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .value-chain-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid #118AB2; /* Cerulean Blue */
+            border-radius: 0.5rem;
+            background-color: white;
+            min-height: 100px;
+            justify-content: center;
+        }
+        .value-chain-arrow {
+            font-size: 2rem;
+            color: #118AB2; /* Cerulean Blue */
+            margin: 0 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+         /* Custom scrollbar for better aesthetics if needed, optional */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9; /* bg-slate-100 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #118AB2; /* Cerulean Blue */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #073B4C; /* Midnight Blue */
+        }
+        .stat-icon {
+            font-size: 2.5rem; /* Adjust icon size as needed */
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-[#073B4C] text-white py-8 shadow-lg">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">Global Smart Home Devices: Market Insights</h1>
+            <p class="text-lg md:text-xl text-slate-300">A Deep Dive into Current Trends, Competitive Dynamics, and Future Projections</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 space-y-16">
+
+        <section id="market-overview" class="bg-white p-6 md:p-8 rounded-xl shadow-xl">
+            <h2 class="text-3xl font-semibold mb-2 text-[#073B4C]">Market Overview</h2>
+            <p class="text-slate-600 mb-8 text-lg">The Global Smart Home Devices market is experiencing robust growth, driven by increasing consumer adoption of connected technologies and the pursuit of convenience, security, and energy efficiency. This section provides a snapshot of the market's current scale and recent expansion.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-medium mb-4 text-[#118AB2]">Historical Market Size (USD Billion)</h3>
+                    <div class="chart-container h-[300px] md:h-[350px] max-h-[400px]">
+                        <canvas id="marketSizeChart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 text-center">This line chart illustrates the consistent upward trajectory of the smart home market size from 2020 to 2024, indicating strong market vitality and consumer interest.</p>
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-medium mb-4 text-[#118AB2]">Key Market Statistics (2024)</h3>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md">
+                        <div class="stat-icon text-[#FF6B6B]">📈</div>
+                        <p class="text-4xl font-bold text-[#FF6B6B]">$150 Billion</p>
+                        <p class="text-slate-600">Current Market Valuation</p>
+                        <p class="text-sm text-slate-500 mt-1">Reflects the total revenue generated by the smart home device industry in the current year.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md">
+                        <div class="stat-icon text-[#06D6A0]">💡</div>
+                        <p class="text-4xl font-bold text-[#06D6A0]">11.1% YoY Growth</p>
+                        <p class="text-slate-600">Year-over-Year Growth (2023-2024)</p>
+                        <p class="text-sm text-slate-500 mt-1">Highlights the dynamic expansion rate of the market compared to the previous year.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="market-segmentation" class="bg-white p-6 md:p-8 rounded-xl shadow-xl">
+            <h2 class="text-3xl font-semibold mb-2 text-[#073B4C]">Market Segmentation & Share</h2>
+            <p class="text-slate-600 mb-8 text-lg">Understanding the composition of the smart home market involves analyzing consumer demographics and the distribution of market share across different device categories. These insights are crucial for identifying key target audiences and growth segments.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h3 class="text-2xl font-medium mb-4 text-[#118AB2]">Smart Home Device Adoption by Age Group</h3>
+                    <div class="chart-container h-[300px] md:h-[350px] max-h-[400px]">
+                        <canvas id="consumerDemographicsChart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 text-center">This bar chart shows the adoption rates of smart home devices across various age demographics, with the 25-44 age groups leading the trend.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-medium mb-4 text-[#118AB2]">Market Share by Device Category (2024)</h3>
+                    <div class="chart-container h-[300px] md:h-[350px] max-h-[400px]">
+                        <canvas id="marketShareChart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 text-center">The donut chart illustrates the current market share distribution, highlighting smart speakers and smart lighting as dominant categories.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="competitive-landscape" class="bg-white p-6 md:p-8 rounded-xl shadow-xl">
+            <h2 class="text-3xl font-semibold mb-2 text-[#073B4C]">Competitive Landscape</h2>
+            <p class="text-slate-600 mb-8 text-lg">The smart home market is characterized by dynamic competition among established technology giants and innovative specialized companies. Understanding the key players and the strategic factors influencing the market is essential.</p>
+            
+            <h3 class="text-2xl font-medium mb-6 text-[#118AB2]">Prominent Market Players</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <div class="bg-slate-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="stat-icon text-[#FF6B6B]">🏢</div>
+                    <h4 class="text-xl font-semibold text-[#073B4C]">TechGiant Inc.</h4>
+                    <p class="text-slate-600 text-sm">Dominant player with a wide ecosystem of integrated smart devices and strong brand recognition.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-lg shadow-md text-center">
+                     <div class="stat-icon text-[#FFD166]">🏠</div>
+                    <h4 class="text-xl font-semibold text-[#073B4C]">HomeSolutions Co.</h4>
+                    <p class="text-slate-600 text-sm">Focuses on user-friendly solutions for home automation and security, popular among families.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-lg shadow-md text-center">
+                     <div class="stat-icon text-[#06D6A0]">💡</div>
+                    <h4 class="text-xl font-semibold text-[#073B4C]">InnovateHome Ltd.</h4>
+                    <p class="text-slate-600 text-sm">Known for cutting-edge technology in smart lighting and energy management systems.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-lg shadow-md text-center">
+                     <div class="stat-icon text-[#118AB2]">🛡️</div>
+                    <h4 class="text-xl font-semibold text-[#073B4C]">SecureLiving Corp.</h4>
+                    <p class="text-slate-600 text-sm">Specializes in advanced smart security systems and monitoring services.</p>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-medium mb-6 text-[#118AB2]">SWOT Analysis</h3>
+            <p class="text-slate-600 mb-6 text-md">A strategic overview of the Strengths, Weaknesses, Opportunities, and Threats shaping the Global Smart Home Devices market.</p>
+            <div class="swot-grid">
+                <div class="swot-item bg-[#06D6A0] text-white">
+                    <h4 class="text-xl font-semibold mb-2">Strengths 💪</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Growing consumer demand for convenience & automation.</li>
+                        <li>Rapid technological advancements (AI, IoT).</li>
+                        <li>Increasing internet penetration and smartphone adoption.</li>
+                        <li>Potential for significant energy savings.</li>
+                    </ul>
+                </div>
+                <div class="swot-item bg-[#FF6B6B] text-white">
+                    <h4 class="text-xl font-semibold mb-2">Weaknesses 📉</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>High initial cost of some devices and systems.</li>
+                        <li>Data privacy and security concerns among consumers.</li>
+                        <li>Interoperability issues between different brands/ecosystems.</li>
+                        <li>Complexity of setup and use for some non-tech-savvy users.</li>
+                    </ul>
+                </div>
+                <div class="swot-item bg-[#FFD166] text-[#073B4C]">
+                    <h4 class="text-xl font-semibold mb-2">Opportunities 🚀</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Expansion into emerging markets with rising disposable incomes.</li>
+                        <li>Integration with healthcare and assisted living sectors.</li>
+                        <li>Development of more sophisticated AI-driven personalization.</li>
+                        <li>Partnerships with builders and real estate developers.</li>
+                    </ul>
+                </div>
+                <div class="swot-item bg-[#118AB2] text-white">
+                    <h4 class="text-xl font-semibold mb-2">Threats ⚠️</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Increasing cybersecurity risks and data breaches.</li>
+                        <li>Intense price competition leading to margin eros
